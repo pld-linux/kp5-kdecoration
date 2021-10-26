@@ -1,14 +1,14 @@
-%define		kdeplasmaver	5.23.1
+%define		kdeplasmaver	5.23.2
 %define		qtver		5.9.0
 %define		kpname		kdecoration
 Summary:	A plugin-based library to create window decorations
 Name:		kp5-%{kpname}
-Version:	5.23.1
+Version:	5.23.2
 Release:	1
 License:	GPL v2+/LGPL v2.1+
 Group:		X11/Libraries
 Source0:	http://download.kde.org/stable/plasma/%{kdeplasmaver}/%{kpname}-%{version}.tar.xz
-# Source0-md5:	4b3320581144ecd296304512b4403227
+# Source0-md5:	47635c3abce4e50e66bac0fc1a8c7478
 URL:		http://www.kde.org/
 BuildRequires:	Qt5Core-devel >= %{qtver}
 BuildRequires:	cmake >= 2.8.12
