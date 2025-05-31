@@ -1,10 +1,12 @@
 #
 # Conditional build:
-%bcond_with	tests		# build with tests
+%bcond_with	tests		# test suite
+
 %define		kdeplasmaver	5.27.12
 %define		qtver		5.15.2
 %define		kpname		kdecoration
 Summary:	A plugin-based library to create window decorations
+Summary(pl.UTF-8):	Oparta na wtyczkach biblioteka do tworzenia dekoracji okien
 Name:		kp5-%{kpname}
 Version:	5.27.12
 Release:	1
@@ -12,7 +14,7 @@ License:	GPL v2+/LGPL v2.1+
 Group:		X11/Libraries
 Source0:	https://download.kde.org/stable/plasma/%{kdeplasmaver}/%{kpname}-%{version}.tar.xz
 # Source0-md5:	f8f1d1c2b026e28dd6cff9e275ad81df
-URL:		http://www.kde.org/
+URL:		https://kde.org/
 BuildRequires:	Qt5Core-devel >= %{qtver}
 BuildRequires:	cmake >= 3.16.0
 BuildRequires:	kf5-extra-cmake-modules >= 1.4.0
@@ -25,6 +27,9 @@ BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
 A plugin-based library to create window decorations.
+
+%description -l pl.UTF-8
+Oparta na wtyczkach biblioteka do tworzenia dekoracji okien.
 
 %package devel
 Summary:	Header files for %{kpname} development
@@ -46,6 +51,7 @@ Pliki nagłówkowe dla programistów używających %{kpname}.
 	-G Ninja \
 	%{!?with_tests:-DBUILD_TESTING=OFF} \
 	-DKDE_INSTALL_USE_QT_SYS_PATHS=ON
+
 %ninja_build -C build
 
 %if %{with tests}
@@ -54,6 +60,7 @@ ctest
 
 %install
 rm -rf $RPM_BUILD_ROOT
+
 %ninja_install -C build
 
 %find_lang %{kpname} --all-name --with-kde
